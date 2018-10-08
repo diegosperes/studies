@@ -1,10 +1,38 @@
 from unittest import TestCase
-from google.longest_subsequence_word.solution import solution
+from google.longest_subsequence_word.solution import solution, Sequence
 
 
 class TrieTree:
     def values(self):
         return ['able', 'ale', 'apple', 'bale', 'kangaroo']
+
+
+class StringSequenceModel(TestCase):
+
+    def test_is_subsequence(self):
+        string = Sequence('fadjuitcegnso')
+        self.assertTrue(string.is_subsequence('juice'))
+
+    def test_is_not_subsequence(self):
+        string = Sequence('fadjuitcegnso')
+        self.assertFalse(string.is_subsequence('tango'))
+
+    def test_is_valid(self):
+        word = Sequence('car')
+        [word.increment() for index in range(3)]
+        self.assertTrue(word.is_valid())
+
+    def test_is_not_valid(self):
+        word = Sequence('car')
+        self.assertFalse(word.is_valid())
+        [word.increment() for index in range(4)]
+        self.assertFalse(word.is_valid())
+
+    def test_check_if_sequence_over(self):
+        word = Sequence('car')
+        self.assertTrue(word.was_not_ended())
+        [word.increment() for index in range(3)]
+        self.assertFalse(word.was_not_ended())
 
 
 class LongestSubsequenceWord(TestCase):
