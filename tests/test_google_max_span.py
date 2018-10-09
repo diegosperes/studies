@@ -4,6 +4,9 @@ from google.max_span.solution import max_span
 
 class MaxSpan(TestCase):
 
+    def test_max_span_with_single_value(self):
+        self.assertEqual(1, max_span([1, 2, 3]))
+
     def test_max_span_with_4(self):
         self.assertEqual(4, max_span([1, 2, 1, 1, 3]))
 
